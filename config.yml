@@ -1,0 +1,53 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: Puntogris blog
+theme: PaperMod
+languages:
+    en:
+        languageName: "English"
+        weight: 1
+        taxonomies:
+          category: categories
+          tag: tags
+          series: series
+        menu:
+            main:
+                - name: Archive
+                  url: archives
+                  weight: 5
+                - name: Search
+                  url: search/
+                  weight: 10
+                - name: Tags
+                  url: tags/
+                  weight: 10
+                - name: WiKi
+                  url: https://github.com/adityatelange/hugo-PaperMod/wiki/
+                - name: Discord
+                  url: https://discord.gg/ahpmTvhVmp
+                  
+params:
+    homeInfoParams:
+        Title: "PaperMod"
+        Content: >
+            Welcome to demo of hugo's theme PaperMod.
+            
+            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+            
+            - Do give a 🌟 on Github !
+            
+            - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
+            
+    socialIcons:
+        - name: github
+          url: "https://github.com/adityatelange/hugo-PaperMod"
+        - name: KoFi
+          url: "https://ko-fi.com/adityatelange"
+        - name: Rss
+          url: "index.xml"
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
