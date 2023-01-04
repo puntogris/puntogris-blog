@@ -1,0 +1,8 @@
+/* 
+ Syntax highlight light background to mach with dark theme 
+ .dark{...
+*/
+
+:root {
+ --hljs-bg:rgb(55, 56, 62);
+}
