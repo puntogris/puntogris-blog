@@ -1,4 +1,4 @@
-baseURL: http://blog.puntogris.com/
+baseURL: https://blog.puntogris.com/
 languageCode: en-us
 title: Puntogris blog
 theme: PaperMod
@@ -45,3 +45,9 @@ markup:
     noClasses: false
     codeFences: true
     style: nord
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
