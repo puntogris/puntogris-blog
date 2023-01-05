@@ -6,7 +6,6 @@ theme: PaperMod
 languages:
     en:
         languageName: "English"
-        weight: 1
         taxonomies:
           category: categories
           tag: tags
@@ -15,31 +14,32 @@ languages:
             main:
                 - name: Archive
                   url: archives
-                  weight: 5
-                - name: Search
-                  url: search/
-                  weight: 10
+                  weight: 1
                 - name: Tags
                   url: tags/
-                  weight: 10
-                - name: Newsletter
-                  url: newsletter
+                  weight: 2
                 - name: Author
                   url: author
+                  weight: 3
+                - name: Newsletter
+                  url: newsletter
+                  weight: 4
+                - name: Search
+                  url: search/
+                  weight: 5
 
 params:
   assets:
     disableHLJS: true
   homeInfoParams:
-      Title: "Hello"
+      Title: "Hi there!"
       Content: >
           Welcome to my blog.
 
-          - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+          - **Joaquin** here, writing mostly about coding.
 
-          - Do give a 🌟 on Github !
+          - Just a developer that loves 🥐 🎧 🎾 💻 🐶 🎮 ...
           
-          - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
 markup:
   highlight:
     noClasses: false
