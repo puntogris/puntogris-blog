@@ -1,3 +1,3 @@
 # Subscribe to the newsletter
 
-Not still available :(
+Not available for now :(
