@@ -1,0 +1,53 @@
+baseURL: https://blog.puntogris.com/
+languageCode: en-us
+title: Puntogris blog
+theme: PaperMod
+
+languages:
+  en:
+    languageName: "English"
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Archive
+          url: archives
+          weight: 1
+        - name: Tags
+          url: tags/
+          weight: 2
+        - name: Author
+          url: author
+          weight: 3
+        - name: Search
+          url: search/
+          weight: 4
+        - name: RSS
+          url: rss/
+          weight: 5
+
+params:
+  assets:
+    disableHLJS: true
+  homeInfoParams:
+    Title: "Hi there!"
+    Content: >
+      Welcome to my blog.
+
+      - **Joaquin** here, writing mostly about coding.
+
+      - Just a developer that loves 🥐 🎧 🎾 💻 🐶 🎮 ...
+
+markup:
+  highlight:
+    noClasses: false
+    codeFences: true
+    style: nord
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
