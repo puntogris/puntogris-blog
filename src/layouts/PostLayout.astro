@@ -10,7 +10,7 @@ const { title, frontmatter } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-gray-900">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -21,7 +21,7 @@ const { title, frontmatter } = Astro.props;
   <body class="flex flex-col min-h-screen">
     <Header />
     <div class="container mx-auto max-w-5xl  px-4 my-4 rounded-lg text-gray-300">
-      <div class="bg-zinc-800 rounded-lg">
+      <div class="bg-gray-800 rounded-lg">
         <div class="pb-3">
           {
             frontmatter.image && (
@@ -46,7 +46,6 @@ const { title, frontmatter } = Astro.props;
 <style is:global>
   html {
     font-family: system-ui, sans-serif;
-    background-color: #2a2a31;
   }
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
