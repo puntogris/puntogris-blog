@@ -1,0 +1,10 @@
+---
+const { post } = Astro.props;
+---
+
+<div class="mt-4 p-4 rounded-lg bg-zinc-800">
+  <a class="text-gray-300" href={post.url}>{post.frontmatter.title}</a>
+  <p class="text-gray-400">{post.frontmatter.description}</p>
+  <p class="text-gray-400">{post.frontmatter.pubDate}</p>
+  <p class="text-gray-400">{post.frontmatter.tags}</p>
+</div>
