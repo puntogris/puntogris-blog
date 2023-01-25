@@ -21,7 +21,7 @@ const { title, frontmatter } = Astro.props;
   <body class="flex flex-col min-h-screen">
     <Header />
     <div
-      class="container mx-auto mt-4 p-4 rounded-lg bg-zinc-800 text-gray-300"
+      class="container mx-auto max-w-5xl my-4 p-4 rounded-lg bg-zinc-800 text-gray-300"
     >
       <div class="mb-3">
         <p class="mb-2 text-lg font-bold">{frontmatter.title}</p>
@@ -31,7 +31,9 @@ const { title, frontmatter } = Astro.props;
           )
         }
       </div>
-      <slot />
+      <div class="prose prose- max-w-none prose-invert">
+        <slot />
+      </div>
     </div>
     <Footer />
   </body>
@@ -45,5 +47,8 @@ const { title, frontmatter } = Astro.props;
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+  astro-code {
+    background-color: #ffffff;
   }
 </style>
