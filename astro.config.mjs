@@ -7,8 +7,11 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
+import preact from "@astrojs/preact";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind(), sitemap(), preact()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
