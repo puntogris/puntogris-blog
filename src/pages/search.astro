@@ -1,9 +1,19 @@
 ---
 import Search from "../components/Search";
 import Layout from "../layouts/Layout.astro";
+
+const posts = await Astro.glob("../pages/**/*.md");
+const searchList = posts
+  .filter(({ frontmatter }) => !frontmatter.draft)
+  .map((post) => ({
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    headings: post.getHeadings().map((h) => h.text),
+    frontmatter: post.frontmatter,
+    url: post.url,
+  }));
 ---
 
 <Layout title="Search">
-  <Search client:visible>
-</Search>
+  <Search searchList={searchList} client:load />
 </Layout>

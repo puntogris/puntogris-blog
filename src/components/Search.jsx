@@ -1,23 +1,57 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
+import Fuse from "fuse.js";
+import PostCard from "./PostCard";
 
-export default function Search() {
-  const [input, setInput] = useState("a");
-  const onChangeHandler = event => {
+export default function Search({ searchList }) {
+  const [input, setInput] = useState("");
+  const [searchResults, setSearchResults] = useState();
+
+  const onChangeHandler = (event) => {
     setInput(event.target.value);
- };
+  };
+
+  const fuse = new Fuse(searchList, {
+    keys: ["title", "description", "headings"],
+    includeMatches: true,
+    minMatchCharLength: 2,
+    threshold: 0.5,
+  });
+
+  useEffect(() => {
+    const search = fuse.search(input);
+    console.log(search);
+
+    setSearchResults(search);
+  }, [input]);
+
   return (
-    <>
-    <Test setValue={onChangeHandler} />
-    {input}
-    </>
+    <div>
+      <Test setValue={onChangeHandler} />
+      {input.length > 1 && (
+        <div className="mt-8 text-gray-300">
+          Found {searchResults?.length}
+          {searchResults?.length && searchResults?.length === 1
+            ? " result"
+            : " results"}{" "}
+          for '{input}'
+        </div>
+      )}
+      <ul>
+        {searchResults &&
+          searchResults.map(({ item, refIndex }) => (
+            <li>
+              <PostCard post={item} />
+            </li>
+          ))}
+      </ul>
+    </div>
   );
 }
 
-function Test({setValue}) {
-    return (
-        <div>
-
-        <label class="relative block mt-5">
+function Test({ setValue }) {
+  return (
+    <div>
+      <label class="relative block mt-5">
         <span class="sr-only">Search</span>
         <span class="absolute inset-y-0 left-0 flex items-center pl-2">
           <svg
@@ -41,5 +75,5 @@ function Test({setValue}) {
         />
       </label>
     </div>
-    )
+  );
 }
