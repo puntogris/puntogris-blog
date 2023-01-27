@@ -11,6 +11,7 @@ const searchList = posts
     headings: post.getHeadings().map((h) => h.text),
     frontmatter: post.frontmatter,
     url: post.url,
+    tags: post.frontmatter.tags
   }));
 ---
 
