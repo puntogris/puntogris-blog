@@ -1,13 +1,16 @@
 ---
+import Paginator from "../components/Paginator";
 import PostCard from "../components/PostCard";
 import Layout from "../layouts/Layout.astro";
 const posts = await Astro.glob("../pages/posts/*.md");
+const paginatedPosts = posts.slice(0, 5);
 ---
 
 <Layout title="Welcome">
-  <main class="flex flex-col gap-y-4 mt-4">
-    {
-      posts.map((post) => <PostCard post={post}/>)
-    }
-  </main>
+  <div class="flex justify-between flex-wrap mb-4">
+    <div class="flex flex-col gap-y-4 my-4">
+      {paginatedPosts.map((post) => <PostCard post={post} />)}
+    </div>
+    <Paginator currentPage={1} totalPages={13} />
+  </div>
 </Layout>

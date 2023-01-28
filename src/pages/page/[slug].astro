@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const getPageNumbers = (numberOfPosts: number) => {
+    const numberOfPages = numberOfPosts / Number(5);
+
+    let pageNumbers: number[] = [];
+    for (let i = 1; i <= Math.ceil(numberOfPages); i++) {
+      pageNumbers = [...pageNumbers, i];
+    }
+
+    return pageNumbers;
+  };
+
+  const posts = await Astro.glob("../../pages/posts/*.md");
+  const filteredPosts = posts.filter(({ frontmatter }) => !frontmatter.draft);
+  let postResult = filteredPosts.map((post) => {
+    return {
+      params: {
+        slug: 2,
+      },
+      props: {
+        post,
+      },
+    };
+  });
+  const pagePaths = getPageNumbers(filteredPosts.length).map((pageNum) => ({
+    params: { slug: pageNum },
+  }));
+  return pagePaths;
+}
+
+
+const { slug } = Astro.params;
+const { post } = Astro.props;
+
+const paginatedPosts = filteredPosts.slice(0, 5);
+---
+
+<Layout title="Posts">
+    <p></p>
+</Layout>
