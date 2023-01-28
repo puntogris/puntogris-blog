@@ -1,0 +1,29 @@
+---
+import PostCard from "../../components/PostCard";
+import Layout from "../../layouts/Layout.astro";
+import getUniqueTags from "../../utils/getUniqueTags";
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob("../../pages/posts/*.md");
+
+  const tags = getUniqueTags(posts);
+  return tags.map((tag) => {
+    return {
+      params: {
+        tag,
+      }
+    };
+  });
+}
+
+const { tag } = Astro.params;
+
+const posts = await Astro.glob("../../pages/posts/*.md");
+const tagPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
+---
+
+<Layout title="Tag">
+  <main class="flex flex-col gap-y-4 mt-4">
+    {tagPosts.map((post) => <PostCard post={post} />)}
+  </main>
+</Layout>

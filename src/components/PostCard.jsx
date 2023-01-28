@@ -21,7 +21,7 @@ export default function PostCard({ post }) {
         <div class="flex flex-wrap gap-3 text-gray-300">
           {post.frontmatter.date}
           {post.frontmatter.tags.map((tag) => (
-            <a class="hover:text-blue-400" href={`/categories/${tag}`}>
+            <a class="hover:text-blue-400" href={`/tags/${tag}`}>
               {tag}
             </a>
           ))}

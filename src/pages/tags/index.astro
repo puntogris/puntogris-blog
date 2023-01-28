@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import getUniqueTags from "../../utils/getUniqueTags";
+const posts = await Astro.glob("../../pages/posts/*.md");
+const tags = getUniqueTags(posts);
+---
+
+<Layout title="Tags">
+  <ul class="text-gray-300">
+    {tags.map((tag) => <li>{tag}</li>)}
+  </ul>
+</Layout>
