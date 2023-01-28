@@ -1,8 +1,21 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import PostCard from "../components/PostCard";
+import Timeline from "../components/Timeline";
+import Layout from "../layouts/Layout.astro";
+const posts = await Astro.glob("../pages/posts/*.md");
 
+function sortFunction(a, b) {
+  var dateA = new Date(a.frontmatter.date).getTime();
+  var dateB = new Date(b.frontmatter.date).getTime();
+  return dateA < dateB ? 1 : -1;
+}
+
+const timelinePosts = posts
+  .filter(({ frontmatter }) => !frontmatter.draft)
+  .sort(sortFunction);
 ---
 
 <Layout title="Archive">
-    Archive
+  <Timeline posts={timelinePosts} client:load />
+
 </Layout>
