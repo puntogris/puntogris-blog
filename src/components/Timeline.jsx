@@ -1,5 +1,4 @@
 function Timeline({ posts }) {
-  console.log(posts);
   let initialDate = 0;
 
   const postView = posts.map((post) => {
