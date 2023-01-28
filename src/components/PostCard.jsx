@@ -13,7 +13,7 @@ export default function PostCard({ post }) {
           />
         </a>
       )}
-      <div class="flex flex-col justify-between p-6">
+      <div class="flex flex-col justify-between p-6 gap-y-3">
         <a class="text-2xl font-medium text-gray-100" href={post.url}>
           {post.frontmatter.title}
         </a>
