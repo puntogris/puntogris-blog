@@ -1,6 +1,6 @@
 ---
 title: '2021-07-02'
-date: '2021-07-02'
+pubDate: '2021-07-02'
 description: 'This is the first post of my new Astro blog.'
 author: 'Astro Learner'
 image:

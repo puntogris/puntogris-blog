@@ -2,7 +2,7 @@ function Timeline({ posts }) {
   let initialDate = 0;
 
   const postView = posts.map((post) => {
-    const postYear = new Date(post.frontmatter.date).getFullYear();
+    const postYear = new Date(post.frontmatter.pubDate).getFullYear();
     if (postYear != initialDate) {
       initialDate = postYear;
       return (

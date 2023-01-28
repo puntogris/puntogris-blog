@@ -11,6 +11,7 @@ import preact from "@astrojs/preact";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://www.blog.puntogris.com",
   integrations: [tailwind(), sitemap(), preact()],
   markdown: {
     shikiConfig: {
