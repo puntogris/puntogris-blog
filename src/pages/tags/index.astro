@@ -7,7 +7,7 @@ const tags = getUniqueTags(posts);
 
 const postPerTag = tags.map((tag) => ({
   tag: tag,
-  posts: posts.reduce((acc, item, index, arr) => {
+  posts: posts.reduce((acc, item) => {
     if (item.frontmatter.tags.includes(tag)) {
       return (acc = acc + 1);
     } else {
