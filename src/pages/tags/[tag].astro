@@ -11,7 +11,7 @@ export async function getStaticPaths() {
     return {
       params: {
         tag,
-      }
+      },
     };
   });
 }
@@ -24,6 +24,10 @@ const tagPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
 
 <Layout title="Tag">
   <main class="flex flex-col gap-y-4 mt-4">
+    <div class="flex bg-gray-800 rounded-lg p-5 text-gray-200 justify-between">
+      <div class="font-bold">tag: <span class="text-xl">{tag}</span></div>
+      <div>{tagPosts.length} matches</div>
+    </div>
     {tagPosts.map((post) => <PostCard post={post} />)}
   </main>
 </Layout>
