@@ -68,14 +68,9 @@ function SearchResults({ results, input }) {
           for '{input}'
         </div>
       )}
-      <ul>
-        {results &&
-          results.map(({ item }) => (
-            <li>
-              <PostCard post={item} />
-            </li>
-          ))}
-      </ul>
+      <div class="flex flex-col gap-y-4 my-4">
+        {results && results.map(({ item }) => <PostCard post={item} />)}
+      </div>
     </div>
   );
 }
