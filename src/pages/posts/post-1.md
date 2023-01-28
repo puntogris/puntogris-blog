@@ -1,5 +1,5 @@
 ---
-title: 'aThis is the first post of my new Astro blog.'
+title: 'This is the first post of my new Astro blog.'
 date: '2022-07-01'
 description: 'This is the first post of my new Astro blog. This is the first post of my new Astro blog. This is the first post of my new Astro blog. '
 author: 'Astro Learner'
