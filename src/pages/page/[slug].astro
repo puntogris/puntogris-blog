@@ -1,4 +1,6 @@
 ---
+import Paginator from "../../components/Paginator";
+import PostCard from "../../components/PostCard";
 import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
@@ -15,29 +17,26 @@ export async function getStaticPaths() {
 
   const posts = await Astro.glob("../../pages/posts/*.md");
   const filteredPosts = posts.filter(({ frontmatter }) => !frontmatter.draft);
-  let postResult = filteredPosts.map((post) => {
-    return {
-      params: {
-        slug: 2,
-      },
-      props: {
-        post,
-      },
-    };
-  });
   const pagePaths = getPageNumbers(filteredPosts.length).map((pageNum) => ({
-    params: { slug: pageNum },
+    params: {
+      slug: pageNum,
+    },
+    props: {
+      posts: posts.slice(pageNum * 5 - 5, pageNum * 5),
+    },
   }));
   return pagePaths;
 }
 
-
 const { slug } = Astro.params;
-const { post } = Astro.props;
-
-const paginatedPosts = filteredPosts.slice(0, 5);
+const { posts } = Astro.props;
 ---
 
 <Layout title="Posts">
-    <p></p>
+  <div class="flex justify-between flex-wrap mb-4">
+    <div class="flex flex-col gap-y-4 my-4">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+    <Paginator currentPage={slug} totalPages={3} index="/" route="/page" />
+  </div>
 </Layout>

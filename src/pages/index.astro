@@ -1,8 +1,10 @@
 ---
+import { table } from "astro/dist/core/logger/core";
 import Paginator from "../components/Paginator";
 import PostCard from "../components/PostCard";
 import Layout from "../layouts/Layout.astro";
 const posts = await Astro.glob("../pages/posts/*.md");
+const totalPages = Math.ceil(posts.length / 5);
 const paginatedPosts = posts.slice(0, 5);
 ---
 
@@ -11,6 +13,6 @@ const paginatedPosts = posts.slice(0, 5);
     <div class="flex flex-col gap-y-4 my-4">
       {paginatedPosts.map((post) => <PostCard post={post} />)}
     </div>
-    <Paginator currentPage={1} totalPages={13} />
+    <Paginator currentPage={1} totalPages={3} index="/" route="/page" />
   </div>
 </Layout>

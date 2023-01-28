@@ -1,4 +1,4 @@
-function Paginator({ currentPage, totalPages }) {
+function Paginator({ currentPage, totalPages, index, route }) {
   const arr = [];
   const max = Math.min(currentPage + 3, totalPages);
   let min = 0;
@@ -18,12 +18,26 @@ function Paginator({ currentPage, totalPages }) {
 
   return (
     <div class="flex gap-2 justify-center items-center w-full">
-      {currentPage != 1 && <PaginatorItem value="<" href="/" focused={false} />}
+      {currentPage != 1 && (
+        <PaginatorItem
+          value="<"
+          href={`${route}/${currentPage - 1}`}
+          focused={false}
+        />
+      )}
       {arr.map((page) => (
-        <PaginatorItem value={page} href="/" focused={page == currentPage} />
+        <PaginatorItem
+          value={page}
+          href={page == 1 ? index : `${route}/${page}`}
+          focused={page == currentPage}
+        />
       ))}
       {currentPage != totalPages && (
-        <PaginatorItem value=">" href="/" focused={false} />
+        <PaginatorItem
+          value=">"
+          href={`${route}/${currentPage + 1}`}
+          focused={false}
+        />
       )}
     </div>
   );
