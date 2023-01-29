@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import "../styles/base.css";
 
 export interface Props {
   title: string;
@@ -34,7 +35,7 @@ const { title, frontmatter } = Astro.props;
           }
           <p class="px-4 pt-4 mb-2 text-lg font-bold">{frontmatter.title}</p>
         </div>
-        <div class="prose prose- max-w-none prose-invert px-4">
+        <div class="prose prose- max-w-none prose-invert px-4 pb-4">
           <slot />
         </div>
       </div>

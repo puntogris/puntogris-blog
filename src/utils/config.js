@@ -5,5 +5,5 @@ export const SITE = {
     title: "AstroPaper",
     ogImage: "astropaper-og.jpg",
     lightAndDarkMode: true,
-    postPerPage: 1,
+    postPerPage: 5,
   };
