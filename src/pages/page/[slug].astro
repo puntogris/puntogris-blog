@@ -2,11 +2,12 @@
 import Paginator from "../../components/Paginator";
 import PostCard from "../../components/PostCard";
 import Layout from "../../layouts/Layout.astro";
+import { SITE } from "../../utils/config";
 import getPublishedPosts from "../../utils/getPublishedPosts";
 
 export async function getStaticPaths() {
-  const getPageNumbers = (numberOfPosts: number) => {
-    const numberOfPages = numberOfPosts / Number(5);
+  const getPageNumbers = (numberOfPosts) => {
+    const numberOfPages = numberOfPosts / SITE.postPerPage;
 
     let pageNumbers: number[] = [];
     for (let i = 1; i <= Math.ceil(numberOfPages); i++) {
@@ -22,7 +23,7 @@ export async function getStaticPaths() {
       slug: pageNum,
     },
     props: {
-      posts: posts.slice(pageNum * 5 - 5, pageNum * 5),
+      posts: posts.slice(pageNum * SITE.postPerPage - SITE.postPerPage, pageNum * SITE.postPerPage),
     },
   }));
   return pagePaths;
@@ -30,6 +31,9 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const { posts } = Astro.props;
+const totalPosts = await getPublishedPosts()
+const totalPages = Math.ceil(totalPosts.length / SITE.postPerPage);
+
 ---
 
 <Layout title="Posts">
@@ -37,6 +41,6 @@ const { posts } = Astro.props;
     <div class="flex flex-col gap-y-4 my-4 flex-grow">
       {posts.map((post) => <PostCard post={post} />)}
     </div>
-    <Paginator currentPage={slug} totalPages={3} index="/" route="/page" />
+    <Paginator currentPage={slug} totalPages={totalPages} index="/" route="/page" client:load />
   </div>
 </Layout>

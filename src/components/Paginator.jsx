@@ -1,41 +1,26 @@
-function Paginator({ currentPage, totalPages, index, route }) {
-  const arr = [];
-  const max = Math.min(currentPage + 3, totalPages);
-  let min = 0;
-
-  if (currentPage - 2 == 0) {
-    min = 1;
-  } else if (currentPage - 2 < 0) {
-    min = currentPage;
-  } else {
-    min = currentPage - 2;
-  }
-  min = min - 1;
-
-  for (var i = min; i < max; i++) {
-    arr.push(i + 1);
-  }
+export default function Paginator({ currentPage, totalPages, index, route }) {
+  const pagination = generatePageRange(currentPage, totalPages);
 
   return (
     <div class="flex gap-2 justify-center items-center w-full">
       {currentPage != 1 && (
         <PaginatorItem
           value="<"
-          href={`${route}/${currentPage - 1}`}
+          href={`${route}/${Number(currentPage) - Number(1)}`}
           focused={false}
         />
       )}
-      {arr.map((page) => (
+      {pagination.map((page) => (
         <PaginatorItem
           value={page}
-          href={page == 1 ? index : `${route}/${page}`}
+          href={`${route}/${page}`}
           focused={page == currentPage}
         />
       ))}
       {currentPage != totalPages && (
         <PaginatorItem
           value=">"
-          href={`${route}/${currentPage + 1}`}
+          href={`${route}/${Number(currentPage) + Number(1)}`}
           focused={false}
         />
       )}
@@ -45,16 +30,42 @@ function Paginator({ currentPage, totalPages, index, route }) {
 
 function PaginatorItem({ value, href, focused }) {
   const styles = {
-    normal:
-      "flex justify-center items-center text-gray-100 bg-slate-800 p-2 rounded-md w-8 h-8",
-    focused:
-      "flex justify-center items-center text-slate-800 bg-gray-100 p-2 rounded-md w-8 h-8",
+    normal: "text-gray-100 bg-slate-800",
+    focused: "text-slate-800 bg-gray-100",
   };
-  return (
-    <a class={focused ? styles.focused : styles.normal} href={href}>
-      {value}
-    </a>
-  );
+
+  if (value != "...") {
+    return (
+      <a
+        class={`flex justify-center items-center p-2 rounded-md w-8 h-8 ${
+          focused ? styles.focused : styles.normal
+        }`}
+        href={href}
+      >
+        {value}
+      </a>
+    );
+  } else {
+    return <div class="text-gray-100 px-1">...</div>;
+  }
 }
 
-export default Paginator;
+function generatePageRange(currentPage, lastPage) {
+  const delta = 2;
+  const range = Array(lastPage)
+    .fill()
+    .map((_, index) => index + 1);
+
+  return range.reduce((pages, page) => {
+    if (page === 1 || page === lastPage) {
+      return [...pages, page];
+    }
+    if (page - delta <= currentPage && page + delta >= currentPage) {
+      return [...pages, page];
+    }
+    if (pages[pages.length - 1] !== "...") {
+      return [...pages, "..."];
+    }
+    return pages;
+  }, []);
+}

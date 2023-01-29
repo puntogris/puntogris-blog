@@ -2,11 +2,12 @@
 import Paginator from "../components/Paginator";
 import PostCard from "../components/PostCard";
 import Layout from "../layouts/Layout.astro";
+import { SITE } from "../utils/config";
 import getPublishedPosts from "../utils/getPublishedPosts";
 
 const posts = await getPublishedPosts();
-const totalPages = Math.ceil(posts.length / 5);
-const paginatedPosts = posts.slice(0, 5);
+const totalPages = Math.ceil(posts.length / SITE.postPerPage);
+const paginatedPosts = posts.slice(0, SITE.postPerPage);
 ---
 
 <Layout title="Welcome">
@@ -19,6 +20,7 @@ const paginatedPosts = posts.slice(0, 5);
       totalPages={totalPages}
       index="/"
       route="/page"
+      client:load
     />
   </div>
 </Layout>
