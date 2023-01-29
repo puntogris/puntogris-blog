@@ -1,18 +1,17 @@
 ---
 import Search from "../components/Search";
 import Layout from "../layouts/Layout.astro";
+import getPublishedPosts from "../utils/getPublishedPosts";
 
-const posts = await Astro.glob("../pages/**/*.md");
-const searchList = posts
-  .filter(({ frontmatter }) => !frontmatter.draft)
-  .map((post) => ({
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    headings: post.getHeadings().map((h) => h.text),
-    frontmatter: post.frontmatter,
-    url: post.url,
-    tags: post.frontmatter.tags
-  }));
+const posts = await getPublishedPosts();
+const searchList = posts.map((post) => ({
+  title: post.frontmatter.title,
+  description: post.frontmatter.description,
+  headings: post.getHeadings().map((h) => h.text),
+  frontmatter: post.frontmatter,
+  url: post.url,
+  tags: post.frontmatter.tags,
+}));
 ---
 
 <Layout title="Search">

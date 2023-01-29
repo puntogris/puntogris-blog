@@ -1,10 +1,11 @@
 ---
 import PostCard from "../../components/PostCard";
 import Layout from "../../layouts/Layout.astro";
+import getPublishedPosts  from "../../utils/getPublishedPosts";
 import getUniqueTags from "../../utils/getUniqueTags";
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob("../../pages/posts/*.md");
+  const posts = await getPublishedPosts();
 
   const tags = getUniqueTags(posts);
   return tags.map((tag) => {
@@ -17,8 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { tag } = Astro.params;
-
-const posts = await Astro.glob("../../pages/posts/*.md");
+const posts = await getPublishedPosts();
 const tagPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
 ---
 

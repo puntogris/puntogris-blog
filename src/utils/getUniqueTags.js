@@ -1,4 +1,4 @@
-const getUniqueTags = (posts) => {
+function getUniqueTags(posts) {
   let tags = [];
   const filteredPosts = posts.filter(({ frontmatter }) => !frontmatter.draft);
   filteredPosts.forEach((post) => {
@@ -7,6 +7,6 @@ const getUniqueTags = (posts) => {
     );
   });
   return tags;
-};
+}
 
 export default getUniqueTags;
