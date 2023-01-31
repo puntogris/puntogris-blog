@@ -29,14 +29,14 @@ export default function Search({ searchList }) {
 function SerchInput({ onInput }) {
   return (
     <div>
-      <label class="relative block mt-5">
+      <label class="relative mt-5 block">
         <span class="absolute inset-y-0 left-0 flex items-center pl-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-5 h-5 fill-none stroke-slate-500"
+            class="h-5 w-5 fill-none stroke-slate-500"
           >
             <path
               stroke-linecap="round"
@@ -46,7 +46,7 @@ function SerchInput({ onInput }) {
           </svg>
         </span>
         <input
-          class="placeholder:italic text-slate-800 placeholder:text-slate-500 block bg-slate-100 w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+          class="block w-full rounded-md border border-slate-300 bg-slate-100 py-2 pl-9 pr-3 text-slate-800 shadow-sm placeholder:italic placeholder:text-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
           type="text"
           placeholder="Search anything"
           onInput={onInput}
@@ -68,7 +68,7 @@ function SearchResults({ results, input }) {
           for '{input}'
         </div>
       )}
-      <div class="flex flex-col gap-y-4 my-4">
+      <div class="my-4 flex flex-col gap-y-4">
         {results && results.map(({ item }) => <PostCard post={item} />)}
       </div>
     </div>

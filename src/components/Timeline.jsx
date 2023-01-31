@@ -14,16 +14,16 @@ export default function Timeline({ posts }) {
     views.push(<TimelinePost post={post} />);
   });
 
-  return <div class="flex flex-col mt-4">{views}</div>;
+  return <div class="mt-4 flex flex-col">{views}</div>;
 }
 
 function TimelineSpacer() {
-  return <div class="border-l-2 border-slate-400 ml-7 pl-4 relative h-4" />;
+  return <div class="relative ml-7 h-4 border-l-2 border-slate-400 pl-4" />;
 }
 
 function TimelineYear({ year }) {
   return (
-    <div class="flex w-14 justify-center py-0.5 px-3 bg-blue-500 text-gray-200 rounded-md">
+    <div class="flex w-14 justify-center rounded-md bg-blue-500 py-0.5 px-3 text-gray-200">
       {year}
     </div>
   );
@@ -31,9 +31,9 @@ function TimelineYear({ year }) {
 
 function TimelinePost({ post }) {
   return (
-    <div class="border-l-2 border-slate-400 ml-7 pl-4 relative pt-4">
-      <div class="w-3 h-3 bg-slate-400 rounded-full absolute -left-[7.5px] top-6" />
-      <div class="bg-slate-800 w-full px-5 py-4 rounded-md text-gray-100 overflow-hidden">
+    <div class="relative ml-7 border-l-2 border-slate-400 pl-4 pt-4">
+      <div class="absolute -left-[7.5px] top-6 h-3 w-3 rounded-full bg-slate-400" />
+      <div class="w-full overflow-hidden rounded-md bg-slate-800 px-5 py-4 text-gray-100">
         <div class="text-sm text-gray-400">{getPostMonthAndDay(post)}</div>
         <a class="text-lg text-gray-300" href={post.url}>
           {post.frontmatter.title}

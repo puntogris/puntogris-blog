@@ -1,7 +1,7 @@
 ---
 import PostCard from "../../components/PostCard";
 import Layout from "../../layouts/Layout.astro";
-import getPublishedPosts  from "../../utils/getPublishedPosts";
+import getPublishedPosts from "../../utils/getPublishedPosts";
 import getUniqueTags from "../../utils/getUniqueTags";
 
 export async function getStaticPaths() {
@@ -23,8 +23,8 @@ const tagPosts = posts.filter((post) => post.frontmatter.tags.includes(tag));
 ---
 
 <Layout title="Tag">
-  <main class="flex flex-col gap-y-4 mt-4">
-    <div class="flex bg-gray-800 rounded-lg p-5 text-gray-200 justify-between">
+  <main class="mt-4 flex flex-col gap-y-4">
+    <div class="flex justify-between rounded-lg bg-gray-800 p-5 text-gray-200">
       <div class="font-bold">tag: <span class="text-xl">{tag}</span></div>
       <div>{tagPosts.length} matches</div>
     </div>

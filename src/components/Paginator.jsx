@@ -2,7 +2,7 @@ export default function Paginator({ currentPage, totalPages, index, route }) {
   const pagination = generatePageRange(currentPage, totalPages);
 
   return (
-    <div class="flex gap-2 justify-center items-center w-full">
+    <div class="flex w-full items-center justify-center gap-2">
       {currentPage != 1 && (
         <PaginatorItem
           value="<"
@@ -37,7 +37,7 @@ function PaginatorItem({ value, href, focused }) {
   if (value != "...") {
     return (
       <a
-        class={`flex justify-center items-center p-2 rounded-md w-8 h-8 ${
+        class={`flex h-8 w-8 items-center justify-center rounded-md p-2 ${
           focused ? styles.focused : styles.normal
         }`}
         href={href}
@@ -46,7 +46,7 @@ function PaginatorItem({ value, href, focused }) {
       </a>
     );
   } else {
-    return <div class="text-gray-100 px-1">...</div>;
+    return <div class="px-1 text-gray-100">...</div>;
   }
 }
 

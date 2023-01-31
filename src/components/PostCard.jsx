@@ -1,9 +1,9 @@
 export default function PostCard({ post }) {
   return (
-    <article class="flex bg-gray-800 rounded-lg overflow-auto flex-col xs:flex-row">
+    <article class="flex flex-col overflow-auto rounded-lg bg-gray-800 xs:flex-row">
       {post.frontmatter.image && (
         <a
-          class="flex h-full object-cover basis-0 shrink-0 grow-0 max-w-screen-xs xs:basis-64 md:basis-96"
+          class="flex h-full max-w-screen-xs shrink-0 grow-0 basis-0 object-cover xs:basis-64 md:basis-96"
           href={post.url}
         >
           <img
@@ -13,7 +13,7 @@ export default function PostCard({ post }) {
           />
         </a>
       )}
-      <div class="flex flex-col justify-between p-6 gap-y-3">
+      <div class="flex flex-col justify-between gap-y-3 p-6">
         <a class="text-2xl font-medium text-gray-100" href={post.url}>
           {post.frontmatter.title}
         </a>
