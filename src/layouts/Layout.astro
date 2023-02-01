@@ -1,7 +1,5 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import "../styles/base.css";
+import BaseLayout from "./BaseLayout.astro";
 
 export interface Props {
   title: string;
@@ -10,29 +8,8 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="bg-gray-900">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="flex min-h-screen flex-col">
-    <Header client:visible />
-    <div class="container mx-auto mb-4 max-w-5xl px-4">
-      <slot />
-    </div>
-    <Footer />
-  </body>
-</html>
-<style is:global>
-  html {
-    font-family: system-ui, sans-serif;
-  }
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  }
-</style>
+<BaseLayout title={title}>
+  <div class="container mx-auto mb-4 max-w-5xl px-4">
+    <slot />
+  </div>
+</BaseLayout>

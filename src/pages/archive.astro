@@ -1,18 +1,11 @@
 ---
 import Timeline from "../components/Timeline";
 import Layout from "../layouts/Layout.astro";
-import getPublishedPosts from "../utils/getPublishedPosts";
-const posts = await getPublishedPosts();
+import getTimelinePosts from "../utils/getTimelinePosts";
 
-function sortFunction(a, b) {
-  var dateA = new Date(a.frontmatter.pubDate).getTime();
-  var dateB = new Date(b.frontmatter.pubDate).getTime();
-  return dateA < dateB ? 1 : -1;
-}
-
-const timelinePosts = posts.sort(sortFunction);
+const posts = await getTimelinePosts();
 ---
 
 <Layout title="Archive">
-  <Timeline posts={timelinePosts} client:load />
+  <Timeline posts={posts} />
 </Layout>

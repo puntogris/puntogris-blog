@@ -1,58 +1,27 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import "../styles/base.css";
-
-export interface Props {
-  title: string;
-}
+import BaseLayout from "./BaseLayout.astro";
 
 const { title, frontmatter } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="bg-gray-900">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="flex min-h-screen flex-col">
-    <Header />
-    <div class="container mx-auto my-4 max-w-5xl rounded-lg px-4 text-gray-300">
-      <div class="rounded-lg bg-gray-800">
-        <div class="pb-3">
-          {
-            frontmatter.image && (
-              <img
-                class="rounded-t-lg"
-                src={frontmatter.image.url}
-                alt={frontmatter.image.alt}
-              />
-            )
-          }
-          <p class="mb-2 px-4 pt-4 text-lg font-bold">{frontmatter.title}</p>
-        </div>
-        <div class="prose- prose prose-invert max-w-none px-4 pb-4">
-          <slot />
-        </div>
+<BaseLayout title={title}>
+  <div class="container mx-auto my-4 max-w-5xl rounded-lg px-4 text-gray-300">
+    <div class="rounded-lg bg-gray-800">
+      <div class="pb-3">
+        {
+          frontmatter.image && (
+            <img
+              class="rounded-t-lg"
+              src={frontmatter.image.url}
+              alt={frontmatter.image.alt}
+            />
+          )
+        }
+        <p class="mb-2 px-4 pt-4 text-lg font-bold">{frontmatter.title}</p>
+      </div>
+      <div class="prose- prose prose-invert max-w-none px-4 pb-4">
+        <slot />
       </div>
     </div>
-    <Footer />
-  </body>
-</html>
-
-<style is:global>
-  html {
-    font-family: system-ui, sans-serif;
-  }
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-  }
-  astro-code {
-    background-color: #ffffff;
-  }
-</style>
+  </div>
+</BaseLayout>

@@ -1,3 +1,5 @@
+import sanitizeSlug from "../utils/sanitizeSlug";
+
 export default function PostCard({ post }) {
   return (
     <article class="flex flex-col overflow-auto rounded-lg bg-gray-800 xs:flex-row">
@@ -21,9 +23,7 @@ export default function PostCard({ post }) {
         <div class="flex flex-wrap gap-3 text-gray-300">
           {post.frontmatter.pubDate}
           {post.frontmatter.tags.map((tag) => (
-            <a class="hover:text-blue-400" href={`/tags/${tag}`}>
-              {tag}
-            </a>
+            <a href={`/tags/${sanitizeSlug(tag)}`}>{tag}</a>
           ))}
         </div>
       </div>

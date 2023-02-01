@@ -1,4 +1,4 @@
-function getUniqueTags(posts) {
+function getUniqueTags(posts): string[] {
   let tags = [];
   const filteredPosts = posts.filter(({ frontmatter }) => !frontmatter.draft);
   filteredPosts.forEach((post) => {
