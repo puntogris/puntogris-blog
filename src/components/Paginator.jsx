@@ -1,4 +1,4 @@
-export default function Paginator({ currentPage, totalPages, index, route }) {
+export default function Paginator({ currentPage, totalPages, route }) {
   const pagination = generatePageRange(currentPage, totalPages);
 
   return (

@@ -1,10 +1,10 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 import getTagsData from "../../utils/getTagsData";
 const tagsData = await getTagsData();
 ---
 
-<Layout title="Tags">
+<PageLayout title="Tags">
   <div class="mt-4 rounded-lg bg-gray-800 p-5 text-xl font-bold text-gray-200">
     Tags
   </div>
@@ -22,4 +22,4 @@ const tagsData = await getTagsData();
       ))
     }
   </div>
-</Layout>
+</PageLayout>

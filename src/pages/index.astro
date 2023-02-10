@@ -1,7 +1,7 @@
 ---
 import Paginator from "../components/Paginator";
 import PostCard from "../components/PostCard";
-import Layout from "../layouts/Layout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
 import { SITE } from "../utils/config";
 import getPublishedPosts from "../utils/getPublishedPosts";
 
@@ -10,7 +10,7 @@ const totalPages = Math.ceil(posts.length / SITE.postPerPage);
 const paginatedPosts = posts.slice(0, SITE.postPerPage);
 ---
 
-<Layout title="Welcome">
+<PageLayout title="Welcome">
   <div class="flex flex-wrap justify-between">
     <div class="my-4 flex flex-grow flex-col gap-y-4">
       {paginatedPosts.map((post) => <PostCard post={post} />)}
@@ -18,9 +18,7 @@ const paginatedPosts = posts.slice(0, SITE.postPerPage);
     <Paginator
       currentPage={1}
       totalPages={totalPages}
-      index="/"
       route="/page"
-      client:load
     />
   </div>
-</Layout>
+</PageLayout>

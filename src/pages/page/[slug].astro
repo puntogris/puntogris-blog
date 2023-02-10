@@ -1,7 +1,7 @@
 ---
 import Paginator from "../../components/Paginator";
 import PostCard from "../../components/PostCard";
-import Layout from "../../layouts/Layout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 import { SITE } from "../../utils/config";
 import getPageNumbers from "../../utils/getPageNumbers";
 import getPublishedPosts from "../../utils/getPublishedPosts";
@@ -29,7 +29,7 @@ const { slug } = Astro.params;
 const { posts, totalPages } = Astro.props;
 ---
 
-<Layout title="Posts">
+<PageLayout title="Posts">
   <div class="flex flex-wrap justify-between">
     <div class="my-4 flex flex-grow flex-col gap-y-4">
       {posts.map((post) => <PostCard post={post} />)}
@@ -37,9 +37,7 @@ const { posts, totalPages } = Astro.props;
     <Paginator
       currentPage={slug}
       totalPages={totalPages}
-      index="/"
       route="/page"
-      client:load
     />
   </div>
-</Layout>
+</PageLayout>
