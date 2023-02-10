@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import getNumberOfWords from "../utils/getNumberOfWords";
+const { frontmatter, compiledContent } = Astro.props;
 
-const { frontmatter } = Astro.props;
+const numberOfWords = getNumberOfWords(compiledContent());
 ---
 
 <BaseLayout title={frontmatter.title}>
@@ -17,9 +19,26 @@ const { frontmatter } = Astro.props;
             />
           )
         }
-        <p class="px-4 pt-4 text-lg font-bold">{frontmatter.title}</p>
+        <div class="px-8">
+          <p class="pt-6 text-lg font-bold">{frontmatter.title}</p>
+          <div class="text-gray-400">
+            <span>{frontmatter.pubDate}</span>
+            <span class="px-2">&#x2022;</span>
+            {
+              frontmatter.tags.map((tag, i) => {
+                if (i == frontmatter.tags.length - 1) {
+                  return <span>{tag}</span>;
+                } else {
+                  return <span>{`${tag}, `}</span>;
+                }
+              })
+            }
+            <span class="px-2">&#x2022;</span>
+            <span>{numberOfWords} words</span>
+          </div>
+        </div>
       </div>
-      <div class="prose- prose prose-invert max-w-none px-8 pt-2 pb-8">
+      <div class="prose prose prose-invert max-w-none px-8 pt-2 pb-8">
         <slot />
       </div>
     </div>
