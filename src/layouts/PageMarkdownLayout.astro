@@ -1,0 +1,13 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div
+    class="container prose prose-invert mx-auto my-4 max-w-5xl rounded-lg bg-gray-800 py-5 px-8"
+  >
+    <slot />
+  </div>
+</BaseLayout>

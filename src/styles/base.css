@@ -1,3 +1,6 @@
 a {
   @apply hover:text-blue-400;
 }
+.prose a {
+  @apply no-underline text-blue-400 hover:underline underline-offset-4;
+}
