@@ -7,7 +7,7 @@ const numberOfWords = getNumberOfWords(compiledContent());
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <div class="container mx-auto my-4 max-w-5xl rounded-lg text-gray-300">
+  <div class="container mx-auto my-4 max-w-5xl rounded-lg text-gray-300 px-4">
     <div class="rounded-lg bg-gray-800">
       <div class="pb-3">
         {
@@ -38,7 +38,7 @@ const numberOfWords = getNumberOfWords(compiledContent());
           </div>
         </div>
       </div>
-      <div class="prose prose prose-invert max-w-none px-8 pt-2 pb-8">
+      <div class="prose prose-invert max-w-none px-8 pt-2 pb-8">
         <slot />
       </div>
     </div>
