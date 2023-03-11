@@ -1,4 +1,4 @@
-import sanitizeSlug from "../utils/sanitizeSlug";
+import { sanitizeSlug } from "../utils/helpers";
 
 export default function PostCard({ post }) {
   return (

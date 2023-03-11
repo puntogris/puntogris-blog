@@ -4,7 +4,11 @@ pubDate: '2022-07-01'
 description: 'This is the first post of my new Astro blog. This is the first post of my new Astro blog. This is the first post of my new Astro blog. '
 author: 'Astro Learner'
 tags: ["blogging", "learning in public"]
+image:
+    url: 'https://github.com/puntogris/neon-maze/raw/master/screenshots/2.webp' 
+    alt: 'The Astro logo with the word One.'
 layout: ../../layouts/PostLayout.astro
+draft: false
 ---
 
 ```kotlin
