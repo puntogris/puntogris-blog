@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import getNumberOfWords from "../utils/getNumberOfWords";
+import { getNumberOfWords } from "../utils/helpers";
 const { frontmatter, compiledContent } = Astro.props;
 
 const numberOfWords = getNumberOfWords(compiledContent());
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <div class="container mx-auto my-4 max-w-5xl rounded-lg text-gray-300 px-4">
+  <div class="container mx-auto my-4 max-w-5xl rounded-lg px-4 text-gray-300">
     <div class="rounded-lg bg-gray-800">
       <div class="pb-3">
         {

@@ -3,8 +3,7 @@ import Paginator from "../../components/Paginator";
 import PostCard from "../../components/PostCard";
 import PageLayout from "../../layouts/PageLayout.astro";
 import { SITE } from "../../utils/config";
-import getPageNumbers from "../../utils/getPageNumbers";
-import getPublishedPosts from "../../utils/getPublishedPosts";
+import { getPageNumbers, getPublishedPosts } from "../../utils/helpers";
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -34,10 +33,6 @@ const { posts, totalPages } = Astro.props;
     <div class="my-4 flex flex-grow flex-col gap-y-4">
       {posts.map((post) => <PostCard post={post} />)}
     </div>
-    <Paginator
-      currentPage={slug}
-      totalPages={totalPages}
-      route="/page"
-    />
+    <Paginator currentPage={slug} totalPages={totalPages} route="/page" />
   </div>
 </PageLayout>

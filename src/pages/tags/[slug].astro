@@ -1,9 +1,11 @@
 ---
 import PostCard from "../../components/PostCard";
 import PageLayout from "../../layouts/PageLayout.astro";
-import getPublishedPosts from "../../utils/getPublishedPosts";
-import getUniqueTags from "../../utils/getUniqueTags";
-import sanitizeSlug from "../../utils/sanitizeSlug";
+import {
+  getPublishedPosts,
+  getUniqueTags,
+  sanitizeSlug,
+} from "../../utils/helpers";
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();

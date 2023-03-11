@@ -1,7 +1,7 @@
 ---
 import Timeline from "../components/Timeline";
 import PageLayout from "../layouts/PageLayout.astro";
-import getTimelinePosts from "../utils/getTimelinePosts";
+import { getTimelinePosts } from "../utils/helpers";
 
 const posts = await getTimelinePosts();
 ---
