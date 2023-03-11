@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import Fuse from "fuse.js";
 import PostCard from "./PostCard";
 
@@ -27,6 +27,15 @@ export default function Search({ searchList }) {
 }
 
 function SerchInput({ onInput }) {
+  const textInput = useRef(null);
+
+  useEffect(() => {
+    console.log("asdasd")
+    textInput.current.value = "Asd"
+    textInput.current.focus();
+
+  }, []);
+
   return (
     <div>
       <label class="relative mt-5 block">
@@ -46,10 +55,11 @@ function SerchInput({ onInput }) {
           </svg>
         </span>
         <input
+        id="test"
+        ref={textInput}
           class="block w-full rounded-md border border-slate-300 bg-slate-100 py-2 pl-9 pr-3 text-slate-800 shadow-sm placeholder:italic placeholder:text-slate-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
           type="text"
           placeholder="Search anything"
-          onInput={onInput}
         />
       </label>
     </div>
