@@ -5,6 +5,9 @@ description: 'This is the first post of my new Astro blog.'
 author: 'Puntogris'
 tags: ["android"]
 draft: false
+image:
+    url: "https://arina.loli.net/2023/05/28/BgnGNlhuRq92eHK.png"
+    alt: "image"
 ---
 
 ```kotlin
