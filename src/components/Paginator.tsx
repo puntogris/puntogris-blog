@@ -36,7 +36,7 @@ function Paginator({ currentPage, totalPages, route }: PaginatorPros) {
 
 function PaginatorItem({ value, href, focused }) {
   const styles = {
-    normal: "text-gray-100 bg-slate-800",
+    normal: "text-gray-100 bg-content",
     focused: "text-slate-800 bg-gray-100",
   };
 

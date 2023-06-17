@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import ScrollToTop from "../components/ScrollToTop";
 import "../styles/base.css";
 
 const { title } = Astro.props;
@@ -16,6 +17,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex min-h-screen flex-col">
+    <ScrollToTop client:load/>
     <Header />
     <slot />
     <Footer />
