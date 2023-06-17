@@ -3,7 +3,7 @@ import { sanitizeSlug } from "../utils/helpers";
 
 export default function PostCard({ post }: { post: CollectionEntry<"blog"> }) {
   return (
-    <article class="flex flex-col overflow-auto rounded-lg bg-gray-800 xs:flex-row">
+    <article class="flex flex-col overflow-auto rounded-lg bg-content xs:flex-row">
       {post.data.image && (
         <a
           class="flex h-full max-w-screen-xs shrink-0 grow-0 basis-0 object-cover xs:basis-64 md:basis-96"
