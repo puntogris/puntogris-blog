@@ -1,32 +1,37 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import { CollectionEntry } from "astro:content";
 import { getNumberOfWords } from "../utils/helpers";
-const { frontmatter, compiledContent } = Astro.props;
+import BaseLayout from "./BaseLayout.astro";
 
-const numberOfWords = getNumberOfWords(compiledContent());
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const numberOfWords = getNumberOfWords(post.body);
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BaseLayout title={post.data.title}>
   <div class="container mx-auto my-4 max-w-5xl rounded-lg px-4 text-gray-300">
     <div class="rounded-lg bg-gray-800">
       <div class="pb-3">
         {
-          frontmatter.image && (
+          post.data.image && (
             <img
               class="rounded-t-lg"
-              src={frontmatter.image.url}
-              alt={frontmatter.image.alt}
+              src={post.data.image.url}
+              alt={post.data.image.alt}
             />
           )
         }
         <div class="px-8">
-          <p class="pt-6 text-lg font-bold">{frontmatter.title}</p>
+          <p class="pt-6 text-lg font-bold">{post.data.title}</p>
           <div class="text-gray-400">
-            <span>{frontmatter.pubDate}</span>
+            <span>{post.data.pubDate}</span>
             <span class="px-2">&#x2022;</span>
             {
-              frontmatter.tags.map((tag, i) => {
-                if (i == frontmatter.tags.length - 1) {
+              post.data.tags.map((tag, i) => {
+                if (i == post.data.tags.length - 1) {
                   return <span>{tag}</span>;
                 } else {
                   return <span>{`${tag}, `}</span>;

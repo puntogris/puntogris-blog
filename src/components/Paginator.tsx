@@ -1,4 +1,10 @@
-export default function Paginator({ currentPage, totalPages, route }) {
+type PaginatorPros = {
+  currentPage: number;
+  totalPages: number;
+  route: string;
+};
+
+function Paginator({ currentPage, totalPages, route }: PaginatorPros) {
   const pagination = generatePageRange(currentPage, totalPages);
 
   return (
@@ -50,10 +56,10 @@ function PaginatorItem({ value, href, focused }) {
   }
 }
 
-function generatePageRange(currentPage, lastPage) {
+function generatePageRange(currentPage: number, lastPage: number) {
   const delta = 2;
   const range = Array(lastPage)
-    .fill()
+    .fill(0)
     .map((_, index) => index + 1);
 
   return range.reduce((pages, page) => {
@@ -69,3 +75,5 @@ function generatePageRange(currentPage, lastPage) {
     return pages;
   }, []);
 }
+
+export default Paginator

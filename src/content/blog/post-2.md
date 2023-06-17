@@ -1,10 +1,9 @@
 ---
-title: 'First post'
-pubDate: '2023-03-11'
+title: 'First post2'
+pubDate: '2023-04-11'
 description: 'This is the first post of my new Astro blog.'
 author: 'Puntogris'
 tags: ["android"]
-layout: ../../layouts/PostLayout.astro
 draft: false
 ---
 

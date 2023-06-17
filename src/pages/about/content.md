@@ -1,4 +1,5 @@
 # About
+
 - Mastodon: [@greydot](https://androiddev.social/@greydot)
 - Twitter: @joacojk
 - Github: [@puntogris](https://github.com/puntogris)
@@ -6,7 +7,8 @@
 - Email: [dev@puntogris.com](mailto:dev@puntogris.com)
 
 What i used to make the blog:
+
 - [Astro](https://astro.build)
-- [Fuse.js](https://fusejs.io/) 
+- [Fuse.js](https://fusejs.io/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Preact](https://preactjs.com/)

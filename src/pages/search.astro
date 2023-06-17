@@ -1,19 +1,11 @@
 ---
-import Search from "../components/Search";
+import SearchView from "../components/Search";
 import PageLayout from "../layouts/PageLayout.astro";
 import { getPublishedPosts } from "../utils/helpers";
 
 const posts = await getPublishedPosts();
-const searchList = posts.map((post) => ({
-  title: post.frontmatter.title,
-  description: post.frontmatter.description,
-  headings: post.getHeadings().map((h) => h.text),
-  frontmatter: post.frontmatter,
-  url: post.url,
-  tags: post.frontmatter.tags,
-}));
 ---
 
 <PageLayout title="Search">
-  <Search searchList={searchList} client:load />
+  <SearchView searchList={posts} client:load />
 </PageLayout>
