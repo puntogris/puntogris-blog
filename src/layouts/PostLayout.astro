@@ -12,40 +12,42 @@ const numberOfWords = getNumberOfWords(post.body);
 ---
 
 <BaseLayout title={post.data.title}>
-  <div class="container my-4 max-w-5xl rounded-lg bg-content mx-4 self-center">
-    <div class="pb-3">
-      {
-        post.data.image && (
-          <img
-            class="rounded-t-lg w-full object-cover max-h-96 filter brightness-90"
-            src={post.data.image.url}
-            alt={post.data.image.alt}
-          />
-        )
-      }
-      <div class="px-8">
-        <h1 class="pt-6 text-3xl font-semibold text-gray-200">
-          {post.data.title}
-        </h1>
-        <div class="text-gray-400 mt-4 gap-2 flex items-center">
-          <span>{post.data.pubDate}</span>
-          <span class="text-xs">&#x2022;</span>
-          {
-            post.data.tags.map((tag, i) => {
-              if (i == post.data.tags.length - 1) {
-                return <span>{tag}</span>;
-              } else {
-                return <span>{`${tag}, `}</span>;
-              }
-            })
-          }
-          <span class="text-xs">&#x2022;</span>
-          <span>{numberOfWords} words</span>
+  <div class="container mx-auto my-4 max-w-5xl rounded-lg px-4 text-gray-300">
+    <div class="rounded-lg bg-content">
+      <div class="pb-3">
+        {
+          post.data.image && (
+            <img
+              class="rounded-t-lg w-full object-cover max-h-96 filter brightness-90"
+              src={post.data.image.url}
+              alt={post.data.image.alt}
+            />
+          )
+        }
+        <div class="px-8">
+          <h1 class="pt-6 text-3xl font-semibold text-gray-200">
+            {post.data.title}
+          </h1>
+          <div class="text-gray-400 mt-4 gap-2 flex items-center">
+            <span>{post.data.pubDate}</span>
+            <span class="text-xs">&#x2022;</span>
+            {
+              post.data.tags.map((tag, i) => {
+                if (i == post.data.tags.length - 1) {
+                  return <span>{tag}</span>;
+                } else {
+                  return <span>{`${tag}, `}</span>;
+                }
+              })
+            }
+            <span class="text-xs">&#x2022;</span>
+            <span>{numberOfWords} words</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="prose prose-invert max-w-none px-8 pt-2 pb-8">
-      <slot />
+      <div class="prose prose-invert max-w-none px-8 pt-2 pb-8">
+        <slot />
+      </div>
     </div>
   </div>
 </BaseLayout>
