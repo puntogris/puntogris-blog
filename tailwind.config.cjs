@@ -12,8 +12,8 @@ module.exports = {
       },
       colors: {
         background: "#121212",
-        content: "#21262D"
-      }
+        content: "#21262D",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
