@@ -1,4 +1,4 @@
 export const SITE = {
   website: "https://blog.puntogris.com/",
-  postPerPage: 7,
+  postPerPage: 5,
 };
