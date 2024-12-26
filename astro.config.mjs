@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [tailwind(), sitemap(), preact()],
   markdown: {
     shikiConfig: {
-      theme: "github-dark",
+      theme: "tokyo-night",
       langs: [],
       wrap: true,
     },

@@ -1,4 +1,4 @@
-import { CollectionEntry, getCollection, getEntry } from "astro:content";
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 import { SITE } from "./config";
 
 export function getUniqueTags(posts: CollectionEntry<"blog">[]): string[] {

@@ -1,16 +1,19 @@
-import { CollectionEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import { sanitizeSlug } from "../utils/helpers";
 
 export default function PostCard({ post }: { post: CollectionEntry<"blog"> }) {
   return (
     <article class="flex flex-col overflow-auto rounded-lg bg-content xs:flex-row">
       {post.data.image && (
-        <a class="flex max-h-60 w-full xs:w-2/5" href={`/posts/${post.slug}`}>
+        <a
+          class="flex max-h-60 w-full xs:w-1/3  shrink-0"
+          href={`/posts/${post.slug}`}
+        >
           <img
             src={post.data.image.url}
             alt={post.data.image.alt}
             loading="lazy"
-            class="w-full object-cover brightness-90 filter"
+            class="object-cover w-full brightness-90 filter bg-zinc-100"
           />
         </a>
       )}

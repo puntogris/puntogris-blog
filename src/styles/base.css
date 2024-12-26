@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 a {
   @apply hover:text-blue-400;
 }
 .prose a {
   @apply no-underline text-blue-400 hover:underline underline-offset-4;
+}
+
+:root {
+  @apply bg-content;
 }

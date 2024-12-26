@@ -1,4 +1,4 @@
-import { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 function Timeline({ posts }: { posts: CollectionEntry<"blog">[] }) {
   let currentYear = 0;
