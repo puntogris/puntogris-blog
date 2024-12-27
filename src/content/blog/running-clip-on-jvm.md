@@ -1,54 +1,70 @@
 ---
 title: "Running CLIP on the JVM"
 pubDate: "2024-12-20"
-description: "Adventure of making a CLIP model in Kotlin"
+description: "I tried running a custom OpenCLIP model in Kotlin and it was a fun adventure."
 author: "Puntogris"
 tags: ["openclip", "ml", "jvm"]
-draft: true
+draft: false
 ---
 
 ## Why?
 
-All started because i had the idea to classify images with AI for a plugin for IntelliJ in Kotlin.
+It all started with an idea: I wanted to classify images with AI for an Android Studio plugin.
 
-Both the official repo of OpenAI CLIP and OpenCLIP use PyTorch and Python for training.
-Fournately, there is a pytorh version for Java so we can run the model in Java.
+Both the official repositories for [OpenAI CLIP](https://github.com/openai/CLIP) and [OpenCLIP](https://github.com/mlfoundations/open_clip) rely on PyTorch and Python. Luckily, PyTorch has a Java implementation, allowing us to run the model in the JVM.
 
-Two issues though:
+However, I quickly ran into two major roadblocks:
 
-- Accuracy: for my use case was in the 50-60% range.
-- Size: the model is about 600MB, that's a lot to load into memory.
+- **Accuracy**: The model's performance was between 50-60%, which just wasn’t good enough for my needs.
+- **Size**: The model was around 600MB, way too big to load into memory for a lightweight plugin.
 
-There must be a better way to do this, right?
+Clearly, I needed a better approach.
 
-## How?
+## Finding a Better Way
 
-While in reddit i found a post about a port of clip.cpp to Android using JNI.
+### Accuracy
 
-clip.cpp is a C++ implementation of CLIP that uses models in the GGUF format and runs on CPU. This models can be quantized and go down in size significantly(100mb for q4)
+Improving accuracy would require fine-tuning the model with a custom dataset. You can read more about that process in [this post](https://www.blog.puntogris.com/fine-tunning-openclip/). But reducing the model's size presented a more complex challenge.
 
-Here start the fun!
+While exploring solutions, I discover [clip.cpp](https://github.com/monatis/clip.cpp), a lightweight C++ implementation of CLIP designed to run efficiently on CPUs. It supports GGUF-formatted models, which can be quantized to drastically reduce their size—down to just ~100MB with q4 quantization. Additionally, I found a JNI port of clip.cpp for Android, making it a perfect candidate for this project.
 
-I wanted to use my custom fine-tuned model with OpenCLIP but that was in pytorch, so i had to convert it to a GGUF model.(:pain:)
+### The Journey to GGUF
 
-It was a lot of trial and error but i got it working. Later i found an implementation that worked great, but hey at least i learned a thing or two.
+#### Step 1: OpenCLIP to HuggingFace
 
-Now we have the model in HuggingFace, time to run another script.
-Now we have it in a GGUF format, time to run the OpenCLIP script.
+The first challenge was getting my OpenCLIP model (in PyTorch format) into HuggingFace format. At first, I spent an entire day wrestling with a hacky script to manually map weights, it wasn’t pretty but it worked.
 
-A cool human already coded the JNI port, so i just had to make some changes to the script.
-We can run adapt the cmake to or need to generate the native library.
+I later found a much [cleaner solution](https://gist.github.com/rwightman/c79fd0241ed3c860e898114931c07990) hidden in a HuggingFace repository comment thread.
 
-I had a lot of issues where the JNI wouldn't load the model(aparentyl this is common), and i figured i would take the easy way out and figure it out later.
+#### Step 2: HuggingFace to GGUF
 
-So i bundled everything in a jar and ran it.
+Once the model was in HuggingFace format, the next step was converting it to GGUF with q4 quantization. Luckily, clip.cpp comes with a [handy conversion script](https://github.com/monatis/clip.cpp/blob/main/models/convert_hf_to_gguf.py) that made it super easy to shrink the model down to a fraction of its original size.
+
+#### Step 3: Adapt clip.cpp for Android
+
+To integrate clip.cpp into my Android project, I used a JNI port already available on [Github](https://github.com/shubham0204/clip.cpp/tree/add-android-sample/examples/clip.android) that i found on Reddit. I made some modifications to the build script to generate the native library for Mac. Bundling everything into a JAR, I encountered a new challenge: the library wasn’t being detected during runtime.
+
+After a lot of debugging, I stumbled on a Stack Overflow tip about making [custom native loader](https://stackoverflow.com/a/75623784/3663235). Turns out, that did the trick and got the library loading smoothly.
 
 ## Did it worked?
 
-Hope so
+After all the trial and error, I successfully converted my fine-tuned model. Thanks to q4 quantization, the final size was just 100MB, an impressive reduction from the original 600MB.
 
-Now we need to load the model providing the path to it, and call the methods.
+To test it, I used the CLIPAndroid class and provided the path to the GGUF model:
 
-Lets try...
+```kotlin
+val clip = CLIPAndroid().apply {
+    load(PATH_TO_GGUF_MODEL, verbosity = 1)
+}
+val embeddings = clip.encode_text("dog", NUMBER_OF_THREADS, VECTOR_DIMS, normalize = true)
+Log.d("CLIP", "Embeddings: $embeddings")
+```
 
-It works!!
+I won’t spoil the fun, but it logged the embeddings! 🎉
+
+Looking back, even though it was tricky and full of trial and error and custom scripts(like 15), I learned so much along the way. Honestly, it ended up being pretty fun to see it all come together in the end.
+
+If you're interested, you can check out the plugin and all the scripts I used:
+
+- [Telescope, Andrid Studio plugin](https://github.com/puntogris/telescope) -> Just a heads-up, it's still in the experimental stage.
+- [Random scripts used for this project](https://github.com/puntogris/clipper) -> These aren't super organized, but they worked for my custom use case. They might be helpful for you as well!
