@@ -1,10 +1,13 @@
 ---
-title: "Web"
-pubDate: "2023-03-11"
-description: "Web"
+title: "From Android to Web Development"
+pubDate: "2024-12-26"
+description: "Some thoughts on my journey learning web development in 2024 as an Android developer."
 author: "Puntogris"
-tags: ["web"]
-draft: true
+tags: ["web", "android"]
+draft: false
+image:
+  cover: "../../images/android-dev-tries-web-dev/cover.webp"
+  alt: "Web dev post cover"
 ---
 
 ## My Journey from Android to Web Development in 2024

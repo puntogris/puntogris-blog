@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import { CollectionEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import Fuse from "fuse.js";
 
 function Search({ searchList }: { searchList: CollectionEntry<"blog">[] }) {

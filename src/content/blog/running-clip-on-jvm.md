@@ -5,6 +5,9 @@ description: "I tried running a custom OpenCLIP model in Kotlin and it was a fun
 author: "Puntogris"
 tags: ["openclip", "ml", "jvm"]
 draft: false
+image:
+  cover: "../../images/running-clip-on-jvm/cover.jpg"
+  alt: "Clip"
 ---
 
 ## Why?

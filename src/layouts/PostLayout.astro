@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { getNumberOfWords } from "../utils/helpers";
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -17,9 +18,9 @@ const numberOfWords = getNumberOfWords(post.body);
       <div class="pb-3">
         {
           post.data.image && (
-            <img
+            <Image
               class="rounded-t-lg w-full object-cover max-h-96 filter brightness-90 bg-zinc-100"
-              src={post.data.image.url}
+              src={post.data.image.cover}
               alt={post.data.image.alt}
             />
           )
@@ -45,7 +46,7 @@ const numberOfWords = getNumberOfWords(post.body);
           </div>
         </div>
       </div>
-      <div class="prose prose-invert max-w-none px-8 pt-2 pb-8">
+      <div class="prose prose-invert max-w-none px-8 pt-2 pb-8 prose-img:m-0">
         <slot />
       </div>
     </div>

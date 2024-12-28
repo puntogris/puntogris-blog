@@ -1,24 +1,29 @@
 ---
-title: "Drawing a labyrinth in Android"
+title: "Drawing a maze in Android"
 pubDate: "2024-03-11"
-description: "Generate and draw a labyrinth in Android using a depth-first search algorithm and Canvas for a multiplayer game."
+description: "Generate and draw a maze in Android using a depth-first search algorithm and Canvas for a multiplayer game."
 author: "Puntogris"
 tags: ["android", "canvas"]
 draft: false
 image:
-  url: "https://raw.githubusercontent.com/puntogris/neon-maze/refs/heads/master/screenshots/2.webp"
+  cover: "../../images/android-maze/cover.webp"
   alt: "Maze"
 ---
 
-A YouTube video once suggested that creating a multiplayer labyrinth game would make an exciting portfolio project. The idea was simple yet fun: generate a shared maze for all players, and whenever someone wins, a new maze is generated for everyone to play again.
+A YouTube video once suggested that creating a multiplayer maze game would make an exciting portfolio project. The idea was simple yet fun: generate a shared maze for all players, and whenever someone wins, a new maze is generated for everyone to play again.
 
 I decided to try it out in Android as part of my portfolio project. In this post, I'll walk you through the process of generating and drawing a maze in Android. We'll focus mainly on the UI code and skip the backend for now.
 
 ## Maze generation
 
-The maze generation is based on [Depth First Search](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_depth-first_search)
+The maze generation is based on [depth-first search](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_depth-first_search)
 
-A maze can be seen as a grid of cells, each surrounded by walls. Starting at a random cell, we use depth-first search (DFS) to explore. For each cell, we find an unvisited neighbor, break the wall between them, and move on. If no unvisited neighbors remain, we backtrack until we find one, repeating the process until all cells are visited.
+A maze can be seen as a grid of cells, each surrounded by walls. Starting at a random cell, we use depth-first search (DFS) to explore. For each cell, we find an unvisited neighbor, break the wall between them, and move on. If no unvisited neighbors remain, we backtrack until we find one, repeating the process until all cells have no unvisited neighbors.
+
+<video controls>
+  <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/7/7d/Depth-First_Search_Animation.ogv/Depth-First_Search_Animation.ogv.360p.vp9.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
 
 ## Implementation
 

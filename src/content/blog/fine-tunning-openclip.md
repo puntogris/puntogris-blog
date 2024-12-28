@@ -6,7 +6,7 @@ author: "Puntogris"
 tags: ["openclip", "ml"]
 draft: false
 image:
-  url: "https://raw.githubusercontent.com/mlfoundations/open_clip/main/docs/CLIP.png"
+  cover: "../../images/fine-tunning-openclip/cover.webp"
   alt: "Clip"
 ---
 
@@ -129,8 +129,9 @@ There were a total of 5000 images, each with multiple labels.
 
 The data of evaluation was the same as training so it's biased. In real-life use cases, I noticed the model achieved great accuracy, but the confidence was lower than the original model. This could be due to the small dataset or noice added with multiple labels perimage, but I'm not entirely sure. All in all, for my use case, the results were great.
 
-![Loss](../../images/fine-tunning-openclip-loss.png)
-![Prob](../../images/fine-tunning-openclip-prob.png)
+![Loss](../../images/fine-tunning-openclip/loss.png)
+
+![Prob](../../images/fine-tunning-openclip/prob.png)
 
 ### Final thoughts
 
