@@ -14,8 +14,8 @@ Well, this year was a good one, some things didn't go as planned but overall I'm
 
 ## Github: 2,46849315 average contributions per day
 
-All in all, a great year. Burned myself out a few times, but that’s just because when I start a project, I get super excited and have a hard time pacing myself.
-Made some open-source contributions, and it felt awesome to be part of projects I use every day. Definitely something I want to keep doing!
+All in all, a great year. Burned myself out a few times, but that’s just because when I start a project I get super excited and have a hard time pacing myself.
+Made some open-source contributions, it felt awesome to be part of projects I use every day. Definitely something I want to keep doing!
 
 ![Github](../../images/goodbye-2024/github-contributions.webp)
 
@@ -35,7 +35,7 @@ Honorable mention to SvelteKit, which has quickly become my go-to framework, I c
 
 ### Some AI
 
-Towards the end of the year, I explored AI and developed an Android Studio plugin that lets you use natural language to search for drawables in your app. Pretty cool, if I say so myself!
+Towards the end of the year, I explored AI and developed an [Android Studio plugin](https://github.com/puntogris/telescope) that lets you use natural language to search for drawables in your app. Pretty cool, if I say so myself!
 
 ## Tennis
 
@@ -103,3 +103,5 @@ It’s my first time working at a fintech company. While my direct team isn’t 
 This year, I'd like to travel more, a few months in Peru would be amazing! Back in 2023, I spent three months in Cusco, and it was so refreshing to be in a new environment with so much to explore.
 
 Maybe I’m getting a bit greedy here, but after that, I want to explore more of my own country (Argentina). There are so many amazing places to visit. My idea is to travel to a different province, spend a few weeks there, and repeat that every couple of months.
+
+As for projects, i have a few in the oven, mostly web and blockchain related. So hopefully i can launch those this yeaar.

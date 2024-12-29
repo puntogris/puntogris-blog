@@ -1,12 +1,12 @@
 ---
 title: "From Android to Web Development"
 pubDate: "2024-12-26"
-description: "Some thoughts on my journey learning web development in 2024 as an Android developer."
+description: "Some thoughts on my journey learning web development as an Android developer."
 author: "Puntogris"
 tags: ["web", "android"]
 draft: false
 image:
-  cover: "../../images/android-dev-tries-web-dev/cover.webp"
+  cover: "../../images/android-to-web/cover.webp"
   alt: "Web dev post cover"
 ---
 
