@@ -7,7 +7,7 @@ tags: ["web", "android"]
 draft: false
 image:
   cover: "../../images/android-to-web/cover.webp"
-  alt: "Web dev post cover"
+  alt: "Post cover"
 ---
 
 ## My Journey from Android to Web Development in 2024

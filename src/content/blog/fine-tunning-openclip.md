@@ -7,7 +7,7 @@ tags: ["openclip", "ml"]
 draft: false
 image:
   cover: "../../images/fine-tunning-openclip/cover.webp"
-  alt: "Clip"
+  alt: "Post cover"
 ---
 
 Let's explore how to fine-tune OpenCLIP using as base the `ViT-B-32` model and weights of `openai` and `laion2b_s34b_b79k`.

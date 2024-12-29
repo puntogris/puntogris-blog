@@ -7,7 +7,7 @@ tags: ["openclip", "ml", "jvm"]
 draft: false
 image:
   cover: "../../images/running-clip-on-jvm/cover.jpg"
-  alt: "Clip"
+  alt: "Post cover"
 ---
 
 ## Why?

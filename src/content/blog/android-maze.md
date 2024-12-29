@@ -7,7 +7,7 @@ tags: ["android", "canvas"]
 draft: false
 image:
   cover: "../../images/android-maze/cover.webp"
-  alt: "Maze"
+  alt: "Post cover"
 ---
 
 A YouTube video once suggested that creating a multiplayer maze game would make an exciting portfolio project. The idea was simple yet fun: generate a shared maze for all players, and whenever someone wins, a new maze is generated for everyone to play again.

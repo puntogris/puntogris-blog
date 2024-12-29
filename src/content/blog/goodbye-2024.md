@@ -7,7 +7,7 @@ tags: ["life"]
 draft: false
 image:
   cover: "../../images/goodbye-2024/cover.webp"
-  alt: "2025"
+  alt: "Post cover"
 ---
 
 Well, this year was a good one, some things didn't go as planned but overall I'm happy with the results.
